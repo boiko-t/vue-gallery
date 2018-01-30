@@ -1,0 +1,8 @@
+@import '/src/assets/style/reset.css';
+@import '/src/assets/style/fonts.css';
+
+$blue: #21b8c6;
+
+%gallery-element-shadow {
+  box-shadow: 0 0 4px 4px #c2cdd8;
+}
