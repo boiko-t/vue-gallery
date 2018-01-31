@@ -2,7 +2,10 @@
     <article id="app">
         <div class="content">
             <header id="galleryHeader">welcome to viseven <span class="highlighted">imagestock</span></header>
-            <image-picker></image-picker>
+            <div class="images-wrapper">
+                <img v-for="item in images" :src="item" alt="">
+                <image-picker @addUploadedImage="addUploadedImage"></image-picker>
+            </div>
         </div>
     </article>
 </template>
@@ -16,7 +19,14 @@
             ImagePicker
         },
         data () {
-            return {}
+            return {
+                images: []
+            }
+        },
+        methods: {
+            addUploadedImage: function(image){
+                this.images.push(image);
+            }
         }
     }
 </script>
@@ -51,11 +61,9 @@
         overflow-x: auto;
     }
 
-    .test {
-        width: 1500px;
+    img {
+        width: 100px;
         height: 100px;
-        border: 2px red solid;
-        margin: 5px;
     }
 
     ::-webkit-scrollbar {

@@ -2,7 +2,8 @@
 @import '/src/assets/style/fonts.css';
 
 $blue: #21b8c6;
+$light-gray: #dce3e8;
 
-%gallery-element-shadow {
-  box-shadow: 0 0 4px 4px #c2cdd8;
+%gallery-element-style {
+  box-shadow: 0 2px 10px #c2cdd8;
 }
