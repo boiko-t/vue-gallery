@@ -32,7 +32,7 @@
 
                 reader.onload = (e) => {
                     image = e.target.result;
-                    this.$emit('addUploadedImage', image);
+                    this.$store.commit('addImage', image);
                 };
                 reader.readAsDataURL(file);
             }

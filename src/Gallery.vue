@@ -3,8 +3,8 @@
         <div class="content">
             <header id="galleryHeader">welcome to viseven <span class="highlighted">imagestock</span></header>
             <div class="images-wrapper">
-                <img v-for="item in images" :src="item" alt="">
-                <image-picker @addUploadedImage="addUploadedImage"></image-picker>
+                <gallery-item-preview v-for="image in imagesIdCollection" :id="image"></gallery-item-preview>
+                <image-picker></image-picker>
             </div>
         </div>
     </article>
@@ -12,21 +12,20 @@
 
 <script>
     import ImagePicker from './components/ImgPicker.vue'
+    import GalleryItemPreview from './components/GalleryItemPreview.vue'
 
     export default {
         name: 'gallery',
         components: {
-            ImagePicker
+            ImagePicker, GalleryItemPreview
         },
         data () {
-            return {
-                images: []
-            }
+            return {}
         },
-        methods: {
-            addUploadedImage: function(image){
-                this.images.push(image);
-            }
+        computed: {
+            imagesIdCollection() {
+              return this.$store.getters.imagesIdCollection
+          }
         }
     }
 </script>

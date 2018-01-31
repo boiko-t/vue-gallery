@@ -1,14 +1,16 @@
 <template>
     <div>
-        galleryItem
+      <img :src="image.src" :alt="image.id">
     </div>
 </template>
 
 <script>
     export default {
         name: 'galleryItem',
+        props: ['id'],
         data () {
             return {
+              image: this.$store.getters.imageById(this.id)
             }
         }
     }
