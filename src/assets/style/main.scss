@@ -10,3 +10,23 @@ $gray: #a1b1bb;
   border-radius: 3px;
   box-shadow: 0 2px 10px #c2cdd8;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d1dae3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $blue;
+  border-radius: 10px;
+}

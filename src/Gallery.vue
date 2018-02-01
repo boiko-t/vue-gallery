@@ -3,9 +3,14 @@
         <div class="content">
             <header id="galleryHeader">welcome to viseven <span class="highlighted">imagestock</span></header>
             <div class="images-wrapper">
-                <gallery-item-preview v-for="id in imagesIdCollection" :key="id" :id="id"></gallery-item-preview>
-                <image-picker></image-picker>
+                <gallery-item-preview
+                  @launchPopup="launchPopup"
+                  v-for="id in imagesIdCollection"
+                  :key="id"
+                  :id="id"/>
+                <image-picker/>
             </div>
+            <gallery-item-popup/>
         </div>
     </article>
 </template>
@@ -13,11 +18,12 @@
 <script>
     import ImagePicker from './components/ImgPicker.vue'
     import GalleryItemPreview from './components/GalleryItemPreview.vue'
+    import GalleryItemPopup from './components/GalleryItemPopup.vue'
 
     export default {
         name: 'gallery',
         components: {
-            ImagePicker, GalleryItemPreview
+            ImagePicker, GalleryItemPreview, GalleryItemPopup
         },
         data () {
             return {}
@@ -26,6 +32,9 @@
             imagesIdCollection() {
               return this.$store.getters.imagesIdCollection
           }
+        },
+        methods: {
+          launchPopup: () => alert('launch')
         }
     }
 </script>
@@ -63,25 +72,5 @@
     img {
         width: 100%;
         height: 100%;
-    }
-
-    ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-        border-radius: 7px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #d1dae3;
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-button {
-        display: none;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: $blue;
-        border-radius: 10px;
     }
 </style>

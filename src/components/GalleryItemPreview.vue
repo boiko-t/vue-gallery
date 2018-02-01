@@ -1,5 +1,5 @@
 <template>
-    <div class="image-wrapper">
+    <section @click="launchPopup" class="image-wrapper">
         <img :src="image.src" :alt="image.id"/>
         <div class="info-block">
             <div class="info-item comment">
@@ -17,7 +17,7 @@
               </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -31,8 +31,14 @@
         },
         computed: {
             commentsCount() {
+
               return this.image.comments.length;
             }
+        },
+        methods: {
+          launchPopup() {
+            this.$emit('launchPopup', this.id);
+          }
         }
     }
 </script>
@@ -44,11 +50,11 @@
       @extend %gallery-element-style;
       display: inline-block;
       height: 300px;
+      width: 300px;
       overflow: hidden;
 
       &:hover .info-block {
         transform: translateY(-100%);
-        transiton: transform 1s;
       }
 
       .info-block {
@@ -61,6 +67,7 @@
         align-items: center;
         border-radius: 0 0 3px 3px;
         transform: translateY(0);
+        transition: transform 0.7s;
 
         .info-item {
           position: relative;
