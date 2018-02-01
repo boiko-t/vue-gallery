@@ -2,8 +2,11 @@
 @import '/src/assets/style/fonts.css';
 
 $blue: #21b8c6;
+$deep-blue: #0d7f8a;
 $light-gray: #dce3e8;
+$gray: #a1b1bb;
 
 %gallery-element-style {
+  border-radius: 3px;
   box-shadow: 0 2px 10px #c2cdd8;
 }
