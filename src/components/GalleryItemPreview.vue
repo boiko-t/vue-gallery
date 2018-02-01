@@ -48,9 +48,8 @@
 
     .image-wrapper {
       @extend %gallery-element-style;
-      display: inline-block;
-      height: 300px;
-      width: 300px;
+      height: 250px;
+      width: 250px;
       overflow: hidden;
 
       &:hover .info-block {

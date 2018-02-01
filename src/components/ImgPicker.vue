@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section id="imagePicker">
+        <section id="imagePicker" class="image-wrapper">
             <label class="plus-sign-wrapper">
                 <img src="/src/assets/images/add-icon.png" alt="Add image">
                 <input type="file" @change="onFileSelected">

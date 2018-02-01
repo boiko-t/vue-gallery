@@ -2,7 +2,7 @@
     <article id="app">
         <div class="content">
             <header id="galleryHeader">welcome to viseven <span class="highlighted">imagestock</span></header>
-            <div class="images-wrapper">
+            <div id="galleryItemsWrapper">
                 <gallery-item-preview
                   @launchPopup="launchPopup"
                   v-for="id in imagesIdCollection"
@@ -10,7 +10,10 @@
                   :id="id"></gallery-item-preview>
                 <image-picker></image-picker>
             </div>
-            <gallery-item-popup :isActive="isItemPopupActive" :image="itemPopupImage"></gallery-item-popup>
+            <gallery-item-popup
+                    :isActive="isItemPopupActive"
+                    :image="itemPopupImage"
+                    @closePopup="closePopup"></gallery-item-popup>
         </div>
     </article>
 </template>
@@ -28,7 +31,7 @@
         data () {
             return {
                 isItemPopupActive: false,
-                itemPopupImage: null
+                itemPopupImage: {}
             }
         },
         computed: {
@@ -37,10 +40,26 @@
             }
         },
         methods: {
-          launchPopup(id){
-              this.isItemPopupActive = true;
-              this.itemPopupImage = this.$store.getters.imageById(id);
-          }
+            launchPopup(id){
+                this.isItemPopupActive = true;
+                this.itemPopupImage = this.$store.getters.imageById(id);
+            },
+            closePopup() {
+                this.isItemPopupActive = false;
+            },
+            galleryPosition() {
+                new Packery('#galleryItemsWrapper', {
+                    itemSelector: '.image-wrapper',
+                    gutter: 10,
+                    horizontal: true
+                });
+            }
+        },
+        mounted() {
+            this.galleryPosition();
+        },
+        updated() {
+            this.galleryPosition();
         }
     }
 </script>
@@ -54,7 +73,10 @@
         padding: 20px 20px 40px 20px;
         box-sizing: border-box;
         background: #f0f3f6;
+    }
 
+    #galleryItemsWrapper {
+        height: 660px;
     }
 
     #galleryHeader {
