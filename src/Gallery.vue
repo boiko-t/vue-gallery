@@ -7,10 +7,10 @@
                   @launchPopup="launchPopup"
                   v-for="id in imagesIdCollection"
                   :key="id"
-                  :id="id"/>
-                <image-picker/>
+                  :id="id"></gallery-item-preview>
+                <image-picker></image-picker>
             </div>
-            <gallery-item-popup/>
+            <gallery-item-popup :isActive="isItemPopupActive" :image="itemPopupImage"></gallery-item-popup>
         </div>
     </article>
 </template>
@@ -26,15 +26,21 @@
             ImagePicker, GalleryItemPreview, GalleryItemPopup
         },
         data () {
-            return {}
+            return {
+                isItemPopupActive: false,
+                itemPopupImage: null
+            }
         },
         computed: {
             imagesIdCollection() {
               return this.$store.getters.imagesIdCollection
-          }
+            }
         },
         methods: {
-          launchPopup: () => alert('launch')
+          launchPopup(id){
+              this.isItemPopupActive = true;
+              this.itemPopupImage = this.$store.getters.imageById(id);
+          }
         }
     }
 </script>

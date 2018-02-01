@@ -8,11 +8,11 @@
             </div>
             <div class="likes-wrapper">
               <div class="info-item dislikes">
-                <img src="/src/assets/images/dislike-icon.png" alt="comment">
+                <img src="/src/assets/images/dislike-icon.png" alt="dislike">
                 <span class="count">{{image.likesCount}}</span>
               </div>
               <div class="info-item likes">
-                <img src="/src/assets/images/like-icon.png" alt="comment">
+                <img src="/src/assets/images/like-icon.png" alt="like">
                 <span class="count">{{image.dislikesCount}}</span>
               </div>
             </div>
@@ -22,7 +22,7 @@
 
 <script>
     export default {
-        name: 'galleryItem',
+        name: 'galleryItemPreview',
         props: ['id'],
         data () {
             return {
