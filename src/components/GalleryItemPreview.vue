@@ -1,6 +1,13 @@
 <template>
-    <div>
-      <img :src="image.src" :alt="image.id">
+    <div class="image-wrapper">
+        <img :src="image.src" :alt="image.id"/>
+        <div class="info-block">
+            <div class="comment">
+                <img src="/src/assets/images/comment-icon.png" alt="comment">
+                <span class="count">{{}}</span>
+            </div>
+
+        </div>
     </div>
 </template>
 
@@ -18,4 +25,8 @@
 
 <style lang="scss" scoped>
     @import '../assets/style/main.scss';
+
+    .image-wrapper {
+        display: inline-block;
+    }
 </style>

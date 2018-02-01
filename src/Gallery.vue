@@ -3,7 +3,7 @@
         <div class="content">
             <header id="galleryHeader">welcome to viseven <span class="highlighted">imagestock</span></header>
             <div class="images-wrapper">
-                <gallery-item-preview v-for="image in imagesIdCollection" :id="image"></gallery-item-preview>
+                <gallery-item-preview v-for="id in imagesIdCollection" :key="id" :id="id"></gallery-item-preview>
                 <image-picker></image-picker>
             </div>
         </div>
@@ -61,8 +61,8 @@
     }
 
     img {
-        width: 100px;
-        height: 100px;
+        width: 300px;
+        height: 300px;
     }
 
     ::-webkit-scrollbar {
