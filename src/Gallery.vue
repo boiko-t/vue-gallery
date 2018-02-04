@@ -5,6 +5,7 @@
             <div id="galleryItemsWrapper">
                 <gallery-item-preview
                   @launchPopup="launchPopup"
+                  @placeItems="setGalleryItemsPlacement"
                   v-for="id in imagesIdCollection"
                   :key="id"
                   :id="id"></gallery-item-preview>
@@ -47,19 +48,19 @@
             closePopup() {
                 this.isItemPopupActive = false;
             },
-            galleryPosition() {
+            setGalleryItemsPlacement () {
                 new Packery('#galleryItemsWrapper', {
-                    itemSelector: '.image-wrapper',
+                    itemSelector: '.gallery-item',
                     gutter: 10,
                     horizontal: true
                 });
             }
         },
         mounted() {
-            this.galleryPosition();
+            this.setGalleryItemsPlacement();
         },
         updated() {
-            this.galleryPosition();
+            this.setGalleryItemsPlacement();
         }
     }
 </script>

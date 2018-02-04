@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <section id="imagePicker" class="image-wrapper">
+        <section id="imagePicker" class="gallery-item">
             <label class="plus-sign-wrapper">
                 <img src="/src/assets/images/add-icon.png" alt="Add image">
                 <input type="file" @change="onFileSelected">
@@ -9,7 +8,7 @@
                 Add your Picture
             </p>
         </section>
-    </div>
+
 </template>
 
 <script>
@@ -31,8 +30,7 @@
                 let reader = new FileReader();
 
                 reader.onload = (e) => {
-                    image = e.target.result;
-                    this.$store.commit('addImage', image);
+                    this.$store.commit('addImage', e.target.result);
                 };
                 reader.readAsDataURL(file);
             }
